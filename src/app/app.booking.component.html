@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="responsiveStyle">
+        <h1 tabindex="1">
+            RETRIVE YOUR BOOKING
+        </h1>
+        <p style="font-size: 29px; text-align: center; color:#003145; font-weight: bold;">&mdash;</p>
+        <h3 id="prgrph" tabindex="2">
+            You can find your booking by filling out your family name and booking code in your booking confirmation.
+        </h3>
+        <br>
+        <br>
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <label style="color:#003145;" tabindex="0" for="bookingcode"><h3>Booking Code</h3></label>
+            <input tabindex="4" name="bookingcode" id="bookingcode" [ngClass]="{'error': isValid('bookingcode')}" placeholder="" formControlName="bookingcode" aria-required="true" aria-describedby="Enter Booking Code">
+            <div *ngIf="isValid('bookingcode')">
+                <span style="color: #ff0000" *ngIf="form.controls['bookingcode'].hasError('length')">Min. Length should be 5 and Max. Length should be 6 </span><br>
+                <span style="color: #ff0000" *ngIf="form.controls['bookingcode'].hasError('required')">Booking Code is requierd </span>
+                <span style="color: #ff0000" *ngIf="form.controls['bookingcode'].hasError('alphaNumeric')">Only Alphabet and Numbers between 2 and 9 allowed.</span>
+            </div>
+
+            <label style="color:#003145;" tabindex="0" for="familyname"><h3>Family Name</h3></label>
+            <input tabindex="6" name="familyname" id="familyname" [ngClass]="{'error': isValid('familyname')}" placeholder="" formControlName="familyname" aria-required="true" aria-describedby="Enter Family Name">
+            <div *ngIf="isValid('familyname')">
+                <span style="color: #ff0000" *ngIf="form.controls['familyname'].hasError('required')">Family Name is Requierd</span><br>
+                <span style="color: #ff0000" *ngIf="form.controls['familyname'].hasError('length')">Min. Length should be 2 and Max. Length should be 30 </span><br>
+                <span style="color: #ff0000" *ngIf="form.controls['familyname'].hasError('alphabet')">Only Alphabets are  allowed.</span>
+            </div>
+
+            <br> <br>
+            <Button tabindex="7" aria-required="true" type="submit" [disabled]="!form.valid" [ngClass]="{'buttondisable': !form.valid, 'buttonenable': form.valid}">RETRIEVE BOOKING</Button>
+        </form>
+
+    </div>
+
+</div>

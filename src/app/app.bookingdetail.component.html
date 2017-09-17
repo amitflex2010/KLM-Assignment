@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="responsiveStyle" *ngIf="bookingData">
+        <div style="text-align: center">
+            <h3 tabindex="1">BookingCode:</h3>
+            <h1 tabindex="2">{{bookingData.bookingCode}}</h1>
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <td tabindex="3">
+                        <h4>PASSENGER NAME</h4>
+                    </td>
+                    <td tabindex="4">
+                        <h4>{{getPassengerName()}}</h4>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td tabindex="5">
+                        <h4>FLIGHT NUMBER</h4>
+                    </td>
+
+                    <td tabindex="6">
+                        <h4>{{getFlightNumber()}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td tabindex="7">
+                        <h4>ORIGIN</h4>
+                    </td>
+
+                    <td tabindex="8">
+                        <h4>{{getFlightOrigin()}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td tabindex="9">
+                        <h4>DESTINATION</h4>
+                    </td>
+
+                    <td tabindex="10">
+                        <h4>{{getFlightDestination()}}</h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td tabindex="11">
+                        <h4>DURATION</h4>
+                    </td>
+
+                    <td tabindex="12">
+                        <h4>{{getFlightDuration()}} Mins</h4>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
