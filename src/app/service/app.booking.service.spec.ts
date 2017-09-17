@@ -1,4 +1,4 @@
-import { TestBed, async,fakeAsync, inject, tick } from '@angular/core/testing';
+import { TestBed, async, fakeAsync, inject, tick } from '@angular/core/testing';
 import {
   HttpModule,
   Http,
@@ -24,11 +24,11 @@ describe('Service:BookingService', () => {
   });
 
 it('should retrieve all results',
-  inject([BookingService, XHRBackend], fakeAsync((bookingService:BookingService, mockBackend:MockBackend) => {
-    var res:Response;
+  inject([BookingService, XHRBackend], fakeAsync((bookingService: BookingService, mockBackend: MockBackend) => {
+    let res: Response;
     mockBackend.connections.subscribe(c => {
       expect(c.request.url).toBe('assets/mock.json');
-      let response = new ResponseOptions({body: '[{"name": "RUUD HESP"}]'});
+      const response = new ResponseOptions({body: '[{"name": "RUUD HESP"}]'});
       c.mockRespond(new Response(response));
     });
     bookingService.getBookingDetails('PZIGZ3').subscribe((response) => {

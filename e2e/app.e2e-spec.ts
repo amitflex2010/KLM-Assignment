@@ -7,31 +7,31 @@ describe('assignment-klm App', () => {
     page = new AppPage();
   });
 
-  it('should display RETRIVE YOUR BOOKING message', () => {
+  it('The Heading should be RETRIVE YOUR BOOKING', () => {
     page.navigateTo();
     expect(page.getPageTitleText()).toEqual('RETRIVE YOUR BOOKING');
   });
-  
-  it('should display paragraph message', () => {
+  it(`This paragraph will let you know that You can find your booking by filling
+  out your family name and booking code in your booking confirmation.`, () => {
     page.navigateTo();
-    let paragraphtext = "You can find your booking by filling out your family name and booking code in your booking confirmation."
+    const paragraphtext = 'You can find your booking by filling out your family name and booking code in your booking confirmation.';
     expect(page.getParagraphText()).toEqual(paragraphtext);
   });
-  it('should got to detail page', () => {
-    
-    let bookingCode = page.getBookingCodeText();
-    let familyName = page.getFamilyNameText(); 
-    let submitButton = page.getSubmitButton();
-    'PZIGZ3'.split('').forEach((c) => bookingCode.sendKeys(c));
-    'WER'.split('').forEach((c) => familyName.sendKeys(c));
+  it('After filling up all the fields it should go to page where flight and passenger details will be found.', () => {
+    const bookingCodetext = page.getBookingCodeText();
+    const familyNametext = page.getFamilyNameText();
+    const submitButton = page.getSubmitButton();
+    const bookingcode = 'PZIGZ3';
+    const familyName = 'WER';
+    bookingcode.split('').forEach((c) => bookingCodetext.sendKeys(c));
+    familyName.split('').forEach((c) => familyNametext.sendKeys(c));
 
     submitButton.click().then(() => {
      expect(page.getCurrentURL()).toMatch('/bookingdetails');
       });
 
   });
- 
-   it('should display Booking Code on Detail page', () => {
+ it('On the Flight Detail page you can get Booking code and other details.', () => {
     page.navigateToDetailPage();
     expect(page.getBookingCodeDetail()).toEqual('PZIGZ3');
   });

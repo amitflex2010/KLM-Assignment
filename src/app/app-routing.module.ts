@@ -6,10 +6,8 @@ import {BookingDetailComponent} from './BookingDetail/app.bookingdetail.componen
 
 const appRoutes: Routes = [
     { path: '', component: BookingComponent },
-   
-    { path: 'bookingdetails', component: BookingDetailComponent },
-  
-    { path: '**', redirectTo: '' }
+   { path: 'bookingdetails', component: BookingDetailComponent },
+   { path: '**', redirectTo: '' }
 ];
 
 export const routing = RouterModule.forRoot(appRoutes);

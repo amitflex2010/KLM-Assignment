@@ -17,19 +17,18 @@ export class AppPage {
     return element(by.css('button'));
   }
 
-  getBookingCodeText(){
+  getBookingCodeText() {
    return element(by.id('bookingcode'));
   }
-  
-  getFamilyNameText(){
+  getFamilyNameText() {
     return element(by.id('familyname'));
   }
 
-  getCurrentURL(){
+  getCurrentURL() {
    return browser.driver.getCurrentUrl();
   }
 
-  navigateToDetailPage(){
+  navigateToDetailPage() {
     return browser.get('/bookingdetails');
   }
 
