@@ -2,11 +2,7 @@ import { Component,OnInit } from '@angular/core';
 import { FormBuilder, Validators,FormGroup } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
-
-
 @Component({
-   
-    
     templateUrl: 'app.booking.component.html',
     styleUrls: ['./app.booking.component.sass']
    

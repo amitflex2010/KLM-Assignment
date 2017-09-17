@@ -5,9 +5,9 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app.routing';
 
 import { AppComponent } from './app.component';
-import {BookingComponent} from './app.booking.component';
-import {BookingDetailComponent} from './app.bookingdetail.component';
-import {BookingService } from './app.booking.service'
+import {BookingComponent} from './Booking/app.booking.component';
+import {BookingDetailComponent} from './BookingDetail/app.bookingdetail.component';
+import {BookingService } from './service/app.booking.service'
 
 @NgModule({
   declarations: [

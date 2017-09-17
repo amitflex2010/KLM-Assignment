@@ -1,7 +1,7 @@
 ﻿import { Routes, RouterModule } from '@angular/router';
 
-import {BookingComponent} from './app.booking.component';
-import {BookingDetailComponent} from './app.bookingdetail.component';
+import {BookingComponent} from './Booking/app.booking.component';
+import {BookingDetailComponent} from './BookingDetail/app.bookingdetail.component';
 
 
 const appRoutes: Routes = [
