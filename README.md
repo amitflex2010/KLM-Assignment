@@ -6,7 +6,7 @@ The approach behind this application is, we need to have two pages one for enter
 
 ## Project Setup
 
-After taking code from git from the project root folder Run 'npm install'.
+After taking code from git, from the project root folder Run 'npm install'.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.2.
 
