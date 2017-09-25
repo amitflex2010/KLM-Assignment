@@ -1,5 +1,5 @@
 import {
-    TestBed
+    TestBed, ComponentFixture, async, tick, fakeAsync
 } from '@angular/core/testing';
 
 import {
@@ -9,21 +9,50 @@ import {
     ReactiveFormsModule
 } from '@angular/forms';
 
+import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { Router } from '@angular/router';
+import {Location} from '@angular/common';
+// import { routing } from '../app-routing.module';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
 
 import {BookingComponent} from './app.booking.component';
 
+import { BookingService } from '../service/app.booking.service';
+
+import { HttpModule } from '@angular/http';
+
+export class ExampleComponent {
+}
+
 describe('Component: BookingComponent', () => {
     let component: BookingComponent;
-
+    let debugElement: DebugElement;
+    let bookingService: BookingService;
+    let fixture: ComponentFixture<BookingComponent>;
+    let router: Router;
+    let location: Location;
     beforeEach(() => {
-        TestBed.configureTestingModule({
+    TestBed.configureTestingModule({
             declarations: [BookingComponent],
-            imports: [ReactiveFormsModule, RouterTestingModule]
-        });
+            imports: [ReactiveFormsModule, RouterTestingModule.withRoutes([
+                { path: 'notfound', component: ExampleComponent},
+                { path: 'bookingdetails', component: ExampleComponent}
+            ]), HttpModule],
+            providers: [BookingService]
+        }).compileComponents();
+});
 
-        const fixture = TestBed.createComponent(BookingComponent);
+beforeEach(() => {
+        fixture = TestBed.createComponent(BookingComponent);
         component = fixture.componentInstance;
+
+        debugElement = fixture.debugElement;
+        router = TestBed.get(Router);
+        location = TestBed.get(Location);
+        bookingService = debugElement.injector.get(BookingService);
+        fixture.detectChanges();
     });
 
     it('should have a defined component', () => {
@@ -42,7 +71,12 @@ describe('Component: BookingComponent', () => {
 
     it('form invalid when empty', () => {
         component.ngOnInit();
-         expect(component.form.valid).toBeFalsy();
+        expect(component.form.valid).toBeFalsy();
+
+        fixture.detectChanges();
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('button').disabled).toBeTruthy();
+        expect(component.form.valid).toBeFalsy();
     });
 
     it('should create a `FormControl` for each item', () => {
@@ -132,15 +166,73 @@ describe('Component: BookingComponent', () => {
         expect(errors).toBeFalsy();
   });
 
+ it('should make submit button disabled when incorrect data feed', () => {
+    component.form.controls['bookingcode'].setValue('23s122');
+    component.form.controls['familyname'].setValue('12345');
+    fixture.detectChanges();
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('button').disabled).toBeTruthy();
+  });
+
   it(' after filling up the valid fields form should be valid now', () => {
         component.ngOnInit();
 
         component.form.controls['bookingcode'].setValue('PZIGZ3');
         component.form.controls['familyname'].setValue('RUUDHESP');
-       expect(component.form.valid).toBeTruthy();
+        fixture.detectChanges();
+
+        const compiled = fixture.debugElement.nativeElement;
+        expect(compiled.querySelector('button').disabled).toBeFalsy();
+        expect(component.form.valid).toBeTruthy();
  });
 
-     it('should set the `form value` to a stringified version of our form values', () => {
+ it('should MOVE TO BOOKING DETAIL booking code  matched', async(() => {
+        component.ngOnInit();
+        component.form.controls['bookingcode'].setValue('PZIGZ3');
+        component.form.controls['familyname'].setValue('RUUDHESP');
+        fixture.detectChanges();
+        spyOn(bookingService, 'getBookingDetails').and.returnValue(Observable.of({bookingCode: 'PZIGZ3'}));
+
+        const compiled = fixture.debugElement.nativeElement;
+        const button = compiled.querySelector('button');
+
+        button.click();
+        router.navigateByUrl('/bookingdetails');
+        fixture.whenStable().then(() => {
+          fixture.detectChanges();
+          expect(location.path()).toEqual('/bookingdetails');
+          expect(component.bookingCode).toEqual('PZIGZ3');
+          expect('Booking code does not exist.').toEqual('Booking code does not exist.');
+        });
+
+      }));
+
+ it('should give error when booking code not matched', async(() => {
+
+    component.ngOnInit();
+
+    component.form.controls['bookingcode'].setValue('AAAAA');
+    component.form.controls['familyname'].setValue('FOO');
+
+    fixture.detectChanges();
+
+    spyOn(bookingService, 'getBookingDetails').and.returnValue(Observable.of({bookingCode: 'PZIGZ3'}));
+
+    const compiled = fixture.debugElement.nativeElement;
+    const button = compiled.querySelector('button');
+
+    button.click();
+    router.navigateByUrl('/notfound');
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(location.path()).toEqual('/notfound');
+      expect(component.error.statusCode).toEqual(404);
+      expect(component.error.message).toEqual('Booking code does not exist.');
+    });
+
+  }));
+
+it('should set the `form value` to a stringified version of our form values', () => {
         component.ngOnInit();
 
         component.form.controls['bookingcode'].setValue('PZIGZ3');

@@ -23,19 +23,28 @@ describe('Service:BookingService', () => {
     });
   });
 
+it('should be created', inject([BookingService], (service) => {
+    expect(service).toBeTruthy();
+  }));
+
 it('should retrieve all results',
   inject([BookingService, XHRBackend], fakeAsync((bookingService: BookingService, mockBackend: MockBackend) => {
-    let res: Response;
-    mockBackend.connections.subscribe(c => {
-      expect(c.request.url).toBe('assets/mock.json');
-      const response = new ResponseOptions({body: '[{"name": "RUUD HESP"}]'});
-      c.mockRespond(new Response(response));
+
+    const mockResponse = {
+          bookingCode: 'PZIGZ3',
+          familyName: 'FRUUDHESP'
+      };
+
+    mockBackend.connections.subscribe(res => {
+      const response = new ResponseOptions({body: JSON.stringify(mockResponse)});
+      res.mockRespond(new Response(response));
     });
+
     bookingService.getBookingDetails('PZIGZ3').subscribe((response) => {
-      res = response;
+      expect(response.bookingCode).toBe('PZIGZ3');
+      expect(response.familyName).toBe('FRUUDHESP');
     });
     tick();
-    expect(res[0].name).toBe('RUUD HESP');
   }))
 );
 });

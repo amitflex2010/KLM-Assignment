@@ -9,7 +9,7 @@ export class BookingService {
     constructor(private http: Http) { }
 
     getBookingDetails(bookingCode: string): Observable<any>  {
-         return this.http.get('assets/mock.json')
+         return this.http.get('../assets/mock.json')
                          .map((res: Response) => res.json());
     }
 }

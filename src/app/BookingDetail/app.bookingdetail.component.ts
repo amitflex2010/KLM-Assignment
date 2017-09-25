@@ -12,18 +12,26 @@ styleUrls: ['./app.bookingdetail.component.css']
 export class BookingDetailComponent implements OnInit {
      bookingCode;
      bookingData;
-     constructor(private route: ActivatedRoute, private bookingService: BookingService) { }
+     constructor(private router: Router, private route: ActivatedRoute, private bookingService: BookingService) { }
 
     ngOnInit() {
-       this.route
-        .queryParams
+       this.route.queryParams
         .subscribe(params => {
-            this.bookingCode = params['bookingcode'];
+            this.bookingCode = (params['bookingcode']);
         });
 
         this.bookingService.getBookingDetails(this.bookingCode).
-        subscribe(data => {this.bookingData = data; }, error => {console.log(error); });
-        }
+        subscribe( data => {
+           this.bookingData = data;
+        },
+        error => {
+        console.log(error);
+      });
+    }
+
+    getBookingCode() {
+        return this.bookingCode;
+    }
 
     getPassengerName() {
         return this.bookingData.passengers.title.name
@@ -44,6 +52,9 @@ export class BookingDetailComponent implements OnInit {
 
     getFlightDuration() {
         return this.bookingData.itinerary.connections[0].duration;
+    }
+    gotoHomePage() {
+        this.router.navigate(['/']);
     }
 
 }

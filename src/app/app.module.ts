@@ -7,13 +7,15 @@ import { routing } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {BookingComponent} from './Booking/app.booking.component';
 import {BookingDetailComponent} from './BookingDetail/app.bookingdetail.component';
+import {NotFoundComponent } from './BookingDetail/app.notfound.component';
 import {BookingService } from './service/app.booking.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookingComponent,
-    BookingDetailComponent
+    BookingDetailComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

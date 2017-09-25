@@ -11,6 +11,36 @@ td {
     border-bottom: 1px solid #ddd;
 }
 
+.trip-details {
+    max-width: 350px;
+    border: 1px solid #767676;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.close button {
+    color: white;
+    background-color: #D40504;
+    padding: 10px 10px 10px 10px;
+    border: 0;
+    font-family: myFirstFont;
+    text-align: center;
+    cursor: pointer;
+}
+
+.trip-error {
+    max-width: 350px;
+    border: 1px solid #767676;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.close {
+    margin: 10px auto;
+    width: 100%;
+    text-align: center;
+}
+
 tr:nth-child(even) {
     background-color: #f2f2f2;
 }
