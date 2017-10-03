@@ -2,7 +2,7 @@ import { browser, by, element } from 'protractor';
 
 export class AppPage {
   navigateTo() {
-    return browser.get('/');
+    return browser.get('/search');
   }
 
   getPageTitleText() {
@@ -35,4 +35,13 @@ export class AppPage {
    getBookingCodeDetail() {
     return element(by.css('app-root h1')).getText();
   }
+
+  navigateToNotFoundPage() {
+    return browser.get('/notfound');
+  }
+
+  getCloseButton() {
+    return element(by.css('button'));
+  }
+  
 }
