@@ -25,6 +25,7 @@ let component: BookingDetailComponent;
 let bookingService: BookingService;
 let debugElement: DebugElement;
 let fixture: ComponentFixture<BookingDetailComponent>;
+let activatedRoute: ActivatedRoute;
 
 
   beforeEach(() => {
@@ -32,7 +33,10 @@ let fixture: ComponentFixture<BookingDetailComponent>;
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, HttpModule],
             declarations: [BookingDetailComponent],
-            providers: [BookingService]
+            providers: [BookingService, {
+              provide: ActivatedRoute, useValue: {
+                  queryParams: (Observable.of({'param': {bookingcode: 'PZIGZ3'}}))
+            }}]
         }).compileComponents();
  });
 
@@ -40,12 +44,15 @@ let fixture: ComponentFixture<BookingDetailComponent>;
         fixture = TestBed.createComponent(BookingDetailComponent);
         component = fixture.componentInstance;
         debugElement = fixture.debugElement;
+        activatedRoute = fixture.debugElement.injector.get(ActivatedRoute);
         bookingService = debugElement.injector.get(BookingService);
    });
 
      it('should findTrip when submit button clicked', async(() => {
      component.ngOnInit();
      fixture.detectChanges();
+     const bookingcode = activatedRoute.queryParams['value'].param.bookingcode;
+     expect(bookingcode).toEqual('PZIGZ3');
      spyOn(bookingService, 'getBookingDetails').and.returnValue(Observable.of({ bookingCode: 'PZIGZ3' }));
      fixture.whenStable().then(() => {
       fixture.detectChanges();
