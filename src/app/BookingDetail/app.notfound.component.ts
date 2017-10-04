@@ -3,7 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
 templateUrl: 'app.notfound.component.html',
-styleUrls: ['./app.bookingdetail.component.css']
+styleUrls: ['./app.bookingdetail.component.sass']
   })
 
 export class NotFoundComponent implements OnInit {

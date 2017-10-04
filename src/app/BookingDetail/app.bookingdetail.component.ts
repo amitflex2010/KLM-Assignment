@@ -6,7 +6,7 @@ import {BookingService } from '../service/app.booking.service';
 
 @Component({
 templateUrl: 'app.bookingdetail.component.html',
-styleUrls: ['./app.bookingdetail.component.css']
+styleUrls: ['./app.bookingdetail.component.sass']
   })
 
 export class BookingDetailComponent implements OnInit {
