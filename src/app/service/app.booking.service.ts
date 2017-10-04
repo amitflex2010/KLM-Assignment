@@ -21,7 +21,7 @@ export class BookingService {
         const params: URLSearchParams = new URLSearchParams();
         params.set('bookingcode', bookingCode);
         requestOptions.params = params;
-        return this.http.get('../asset/mock.json', requestOptions)
+        return this.http.get('../assets/mock.json', requestOptions)
                          .map((res: Response) => res.json())
                          .catch((res: Response) => this.onRequestError(res));
     }

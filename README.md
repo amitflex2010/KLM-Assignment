@@ -2,7 +2,7 @@
 
 ## Development Approach
 
-The approach behind this application is, we need to have two pages one for entering the booking details and another one to have it's details. So I have created the two components on for entering details and on for showing details and routes have been created for them. Once details has been entered and and submitted we send the booking code and family details to detail page and then send a request to fetch the details from passed values.
+The approach behind this application is, we need to have three pages one for entering the booking code, another one to have it's details and last one if booking code not found. So I have created the three components one for entering details, one for showing details and one for notfound. The routes have been created for them. Once details has been entered and submitted then, we show booking details on the detail page.
 
 ## Project Setup
 
