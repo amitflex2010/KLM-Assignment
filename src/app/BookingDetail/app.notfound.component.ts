@@ -15,7 +15,7 @@ bookingError;
          this.route
         .queryParams
         .subscribe(params => {
-            this.bookingError = JSON.parse(params['bookingError']);
+            this.bookingError = ({statuscode: params['statuscode'], message: params['message']});
         });
     }
 

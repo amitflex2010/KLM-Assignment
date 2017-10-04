@@ -3,7 +3,6 @@ import { DebugElement } from '@angular/core';
 import {
   tick,
   inject,
-  fakeAsync,
   ComponentFixture,
   TestBed,
   async
@@ -19,9 +18,6 @@ import { BookingService } from '../service/app.booking.service';
 
 import {BookingDetailComponent} from './app.bookingdetail.component';
 
-class MockActivatedRoute {
-    queryParams =  Observable.of({});
-  }
 
 describe('BookingDetailComponent: Initialized the BookingDetail Component', () => {
 
@@ -29,14 +25,14 @@ let component: BookingDetailComponent;
 let bookingService: BookingService;
 let debugElement: DebugElement;
 let fixture: ComponentFixture<BookingDetailComponent>;
-let route: MockActivatedRoute;
+
 
   beforeEach(() => {
 
         TestBed.configureTestingModule({
             imports: [RouterTestingModule, HttpModule],
             declarations: [BookingDetailComponent],
-            providers: [BookingService, { provide: ActivatedRoute, useClass: MockActivatedRoute }]
+            providers: [BookingService]
         }).compileComponents();
  });
 
@@ -45,20 +41,14 @@ let route: MockActivatedRoute;
         component = fixture.componentInstance;
         debugElement = fixture.debugElement;
         bookingService = debugElement.injector.get(BookingService);
-        route = <MockActivatedRoute>TestBed.get(ActivatedRoute); // debugElement.injector.get(ActivatedRoute);
    });
 
      it('should findTrip when submit button clicked', async(() => {
      component.ngOnInit();
-     route.queryParams = Observable.of({ bookingCode: 'PZIGZ3' });
-      // fixture.whenStable().then(() => {
-      fixture.detectChanges();
-     // expect(component.getBookingCode()).toEqual('PZIGZ3');
-     // });
+     fixture.detectChanges();
      spyOn(bookingService, 'getBookingDetails').and.returnValue(Observable.of({ bookingCode: 'PZIGZ3' }));
      fixture.whenStable().then(() => {
       fixture.detectChanges();
-     // expect(component.getBookingCode()).toEqual('PZIGZ3');
       expect(component.bookingData.bookingCode).toEqual('PZIGZ3');
     });
 

@@ -1,3 +1,7 @@
+$label-color: #003145;
+$alert-color: #d40504;
+$font-bold: bold;
+
 .error 
      border: 1px solid #ff0000;
        
@@ -8,26 +12,23 @@ input
       box-sizing: border-box;
       
 input:focus 
-            border: 1px solid #003145;
+      border: 1px solid $label-color;
         
 
 h1
     text-align: center;
-    color: #003145;
+    color: $label-color;
     font-size: 34px;
         
 h3
-    color: #003145;
+    color: $label-color;
 
 div
     font-family: myFirstFont;
     padding: 10px;
 
-.disablecolor
-    background-color: grey;
-
 .buttonenable
-        background-color: #d40504;
+        background-color: $alert-color;
         border: none;
         color: white;
         padding: 12px 20px;
@@ -39,22 +40,36 @@ div
 
 
 .buttondisable
-        background-color: #d40504;
-        opacity: .5;
-        border: none;
-        color: white;
-        padding: 12px 20px;
-        margin: 8px 8px 8px 0px;
-        text-align: center;
-        font-family: myFirstFont;
-        font-size: 16px;
-        width: 100%;
-           
+       @extend .buttonenable;
+       opacity: .5;
+       
+
+.alert
+    color: $alert-color;
+    margin-top: 2px;
+    font-size: .9em;
+    width: 100%;
+    margin-bottom: 20px;
+    display: inline-block;
+   
+
+.parastyle
+    font-size: 25px; 
+    text-align: center; 
+    color: $label-color; 
+    font-weight: $font-bold;    
+
+.lblstyle
+    color: $label-color; 
+    font-weight: $font-bold;
+
 
 @media only screen and (min-width: 770px)  
 
     .responsiveStyle
-        border: 1px solid #003145; padding: 10px; margin-top:30px;
+        border: 1px solid $label-color;
+        padding: 10px; 
+        margin-top: 30px;
         width: 388px;
         height: 90%;
         

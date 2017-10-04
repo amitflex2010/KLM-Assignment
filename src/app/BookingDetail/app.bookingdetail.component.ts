@@ -10,8 +10,8 @@ styleUrls: ['./app.bookingdetail.component.css']
   })
 
 export class BookingDetailComponent implements OnInit {
-     bookingCode;
-     bookingData;
+     bookingCode: string;
+     bookingData: any;
      constructor(private router: Router, private route: ActivatedRoute, private bookingService: BookingService) { }
 
     ngOnInit() {

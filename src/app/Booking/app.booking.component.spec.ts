@@ -13,7 +13,6 @@ import { DebugElement } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Router } from '@angular/router';
 import {Location} from '@angular/common';
-// import { routing } from '../app-routing.module';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 
@@ -173,6 +172,18 @@ beforeEach(() => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('button').disabled).toBeTruthy();
   });
+it('should set the `form value` to a stringified version of our form values', () => {
+        component.ngOnInit();
+
+        component.form.controls['bookingcode'].setValue('PZIGZ3');
+        component.form.controls['familyname'].setValue('RUUDHESP');
+        fixture.detectChanges();
+        component.onSubmit();
+        fixture.whenStable().then(() => {
+        fixture.detectChanges();
+        expect(component.form.value).toEqual(({bookingcode: 'PZIGZ3', familyname: 'RUUDHESP'}));
+         });
+    });
 
   it(' after filling up the valid fields form should be valid now', () => {
         component.ngOnInit();
@@ -232,13 +243,5 @@ beforeEach(() => {
 
   }));
 
-it('should set the `form value` to a stringified version of our form values', () => {
-        component.ngOnInit();
 
-        component.form.controls['bookingcode'].setValue('PZIGZ3');
-        component.form.controls['familyname'].setValue('RUUDHESP');
-        component.onSubmit();
-
-        expect(component.form.value).toEqual(({bookingcode: 'PZIGZ3', familyname: 'RUUDHESP'}));
-    });
 });
