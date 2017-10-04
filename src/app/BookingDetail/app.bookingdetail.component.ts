@@ -29,30 +29,70 @@ export class BookingDetailComponent implements OnInit {
       });
     }
 
+    /**
+   * To get booking code.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
     getBookingCode() {
         return this.bookingCode;
     }
 
+    /**
+   * To get PassengerName.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
     getPassengerName() {
         return this.bookingData.passengers.title.name
         + '. ' + this.bookingData.passengers.firstName + ' ' + this.bookingData.passengers.lastName;
     }
 
+  /**
+   * To get FlightNumber.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
+
     getFlightNumber() {
         return this.bookingData.itinerary.connections[0].segments[0].marketingFlight.number;
     }
 
+    /**
+   * To get FlightOrigin.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
     getFlightOrigin() {
         return this.bookingData.itinerary.connections[0].origin.city.name;
     }
+
+    /**
+   * To get FlightDestination.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
 
     getFlightDestination() {
         return this.bookingData.itinerary.connections[0].destination.city.name;
     }
 
+    /**
+   * To get FlightDuration.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
+
     getFlightDuration() {
         return this.bookingData.itinerary.connections[0].duration;
     }
+
+    /**
+   * Function to go to Searchpage.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
+
     gotoHomePage() {
         this.router.navigate(['/']);
     }

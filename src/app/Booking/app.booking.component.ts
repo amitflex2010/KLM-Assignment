@@ -79,7 +79,6 @@ getBookings(bookingCode) {
         this.form.reset();
       }
     );
-
 }
 
 /**

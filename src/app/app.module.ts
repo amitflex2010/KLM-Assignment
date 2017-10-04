@@ -3,6 +3,9 @@ import { HttpModule } from '@angular/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routing } from './app-routing.module';
+import {ErrorHandler} from '@angular/core';
+
+import {CustomErrorHandler} from './Errorhandling/CustomErrorHandler';
 
 import { AppComponent } from './app.component';
 import {BookingComponent} from './Booking/app.booking.component';
@@ -24,7 +27,7 @@ import {BookingService } from './service/app.booking.service';
     HttpModule
 
   ],
-  providers: [BookingService],
+  providers: [BookingService, {provide: ErrorHandler, useClass: CustomErrorHandler}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ styleUrls: ['./app.bookingdetail.component.sass']
 
 export class NotFoundComponent implements OnInit {
 
-bookingError;
+bookingError: any;
  constructor(private router: Router, private route: ActivatedRoute) { }
 
     ngOnInit() {
@@ -18,6 +18,12 @@ bookingError;
             this.bookingError = ({statuscode: params['statuscode'], message: params['message']});
         });
     }
+
+    /**
+   * Function to go to Searchpage.
+   * @param none
+   * @memberof BookingDetailComponent
+   */
 
     gotoHomePage() {
         this.router.navigate(['/']);
