@@ -1,6 +1,7 @@
 # AssignmentKLM
 
-# Problem Statement:  Create an Angular find-trip component containing a simple form like the design. 
+# Problem Statement:  
+Create an Angular find-trip component containing a simple form like the design. 
 
 # Expected:
 - Use Angular 2 (preferably) with TypeScript.
@@ -26,7 +27,7 @@
 - Fully accessible.
 - Retrieve actual (mocked) trip data.
 
-For Screen shots please refer Front-end-case.docx
+## For App Screen shots please refer Front-end-case.docx
 
 ## Development Approach
 
