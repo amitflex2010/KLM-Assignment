@@ -1,5 +1,7 @@
 # AssignmentKLM
 
+Create an Angular find-trip component containing a simple form like the design. For this we need to build a application to get the details from the booking code. 
+
 ## Development Approach
 
 The approach behind this application is, we need to have three pages one for entering the booking code, another one to have it's details and last one if booking code not found. So I have created the three components one for entering details, one for showing details and one for notfound. The routes have been created for them. Once details has been entered and submitted then, we show booking details on the detail page. if details not correct then not found page comes up.
