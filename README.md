@@ -1,6 +1,28 @@
 # AssignmentKLM
 
-Create an Angular find-trip component containing a simple form like the design. For this we need to build a application to get the details from the booking code. 
+# Problem Statement:  Create an Angular find-trip component containing a simple form like the design. 
+
+# Expected:
+- Use Angular 2 (preferably) with TypeScript.
+- You can use Angular-CLI to bootstrap / scaffold the application.
+- Create a component with this form.
+- The form should be reactive (not template driven).
+- Include form validation, according to:
+Booking Code rules:
+ •	Max-Length: 6, Min-Length: 5
+ •	Valid numbers: 2-9
+ •	Alphabet: all
+Family Name rules:
+ •	Min-Length: 2, Max-Length: 30
+ •	Only Alphabets.
+
+- 100% test coverage.
+- Styling (please see the screen shots below).
+- Responsive.
+- Fully accessible.
+- Retrieve actual (mocked) trip data.
+
+For Screen shots please refer Front-end-case.docx
 
 ## Development Approach
 
