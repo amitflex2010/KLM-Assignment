@@ -27,7 +27,7 @@ Create an Angular find-trip component containing a simple form like the design.
 - Fully accessible.
 - Retrieve actual (mocked) trip data.
 
-### For App Screen shots please refer Front-end-case.docx
+#### For App Screen shots please refer Front-end-case.docx
 
 ## Development Approach
 
