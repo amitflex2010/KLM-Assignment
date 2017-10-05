@@ -8,13 +8,17 @@
 - Create a component with this form.
 - The form should be reactive (not template driven).
 - Include form validation, according to:
-Booking Code rules:
- •	Max-Length: 6, Min-Length: 5
- •	Valid numbers: 2-9
- •	Alphabet: all
-Family Name rules:
- •	Min-Length: 2, Max-Length: 30
- •	Only Alphabets.
+
+-Booking Code rules:
+
+ 1.	Max-Length: 6, Min-Length: 5
+ 2.	Valid numbers: 2-9
+ 3.	Alphabet: all
+ 
+-Family Name rules:
+
+ 1.	Min-Length: 2, Max-Length: 30
+ 2.	Only Alphabets.
 
 - 100% test coverage.
 - Styling (please see the screen shots below).
